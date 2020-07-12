@@ -1,15 +1,5 @@
 # RUST - _A new one_
 
-## Resources 
-
-[RUST the org](http://rust-lang.org)
-
-[Rust Online Editor](play.rust-lang.org)
-
-[Install Path](https://www.rust-lang.org/tools/install)
-
-[Cargo](https://doc.rust-lang.org/cargo/index.html)
-
 ## What is RUST?
 Rust, originally designed by Graydon Hoare at Mozilla Research, is a multi-paradigm programming language which is fast, memory efficient with no runtime or garbage collector, can run on embedded systems and can easily integrate with other language.
 
@@ -93,7 +83,7 @@ regex = "0.1.41"
 $ cargo update -p rand   # updates just “rand”
  ```
 
-### Cargo Package layout
+### A look at Cargo Package layout
 ```
 .
 ├── Cargo.lock
@@ -129,7 +119,7 @@ In above structure,
 - Examples go in the examples directory.
 - Integration tests go in the tests directory.
 
-## Tests
+## What bout Test framework?
 Here we have two kind of tests, Cargo checks unit tests under `src ` directory whereas checks integration tests under `test` directory. And here is the command
 ```
 cargo test // for all the tests
@@ -137,3 +127,13 @@ cargo test specific_test
 ```
 
 ## More to come ...
+
+## References
+
+[RUST the org](http://rust-lang.org)
+
+[Rust Online Editor](play.rust-lang.org)
+
+[Install Path](https://www.rust-lang.org/tools/install)
+
+[Cargo](https://doc.rust-lang.org/cargo/index.html)
