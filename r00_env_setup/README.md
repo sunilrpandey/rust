@@ -4,11 +4,12 @@
 Rust, originally designed by Graydon Hoare at Mozilla Research, is a multi-paradigm programming language which is fast, memory efficient with no runtime or garbage collector, can run on embedded systems and can easily integrate with other language.
 
 ## Let us install it first
-For now, my favorite platform WSL
+
+Please do refer [Installation page](https://www.rust-lang.org/tools/install) but for completion sake, let me install it on my favorite platform WSL(Window Subsystem for Linux)
 
 ` curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh `
 
-After installation to PATH, which has binaries such as rustc, cargo, and rustup.
+After installation, add it to PATH, which has binaries such as rustc, cargo, and rustup.
 
 ` export PATH="$HOME/.cargo/bin:$PATH"`
 
@@ -16,15 +17,18 @@ And source the environemnt
 
 `source ~/.cargo/env`
 
-Check the version
+to verify installation, do check the version
 
 `rustc --version`
-## Are we ready???
-To test if we are ready to explore, create a `hello_world.rs` and type 
+
+BTW use [Rust Online Editor](play.rust-lang.org) if you are interested in just 'window coding'
+
+## Are we ready to code? why not!
+To test if we are ready to explore, create a `hello_rust.rs` and type 
 ```
 fn main()
 {
-    println!("Hello Rust!!");
+    println!("Hey!, I am refreshing rust!!");
 
 }
 ```
@@ -35,10 +39,10 @@ and compile
 Which will give you hello_rust.exe, execute the binary to seee the output 
 ```
 run ./hello_rust.exe
-Hello Rust!!
+Hey!, I am refreshing rust!!!!
 ```
 
-## Dont we have make?? We have Cargo, the package manager
+## Cargo, the package manager to make life easier
 ### What Cargo does exactly?
 Cargo downloads your Rust package’s dependencies, compiles your packages, makes distributable packages, and uploads them to crates.io, the Rust community’s package registry. 
 
@@ -131,9 +135,5 @@ cargo test specific_test
 ## References
 
 [RUST the org](http://rust-lang.org)
-
-[Rust Online Editor](play.rust-lang.org)
-
-[Install Path](https://www.rust-lang.org/tools/install)
 
 [Cargo](https://doc.rust-lang.org/cargo/index.html)
