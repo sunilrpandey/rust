@@ -1,9 +1,18 @@
 # RUST - _A new one_
+## Index
+- [What is RUST](#rust)
+- [Installation Guide](#installation)
+- [Try Hello Rust](#hellorust)
+- [Cargo, package Manager](#cargo)
+- [Setup New Project : the Cargo Way](#newproj)
+- [But, what is this Cargo.lock? Which I see along with Cargo.toml?](#lock)
+- [Cargo Package layout](#layout)
+- [What bout Test framework?](#testframework)
 
-## What is RUST?
+## <a name=rust> What is RUST? </a>
 Rust, originally designed by Graydon Hoare at Mozilla Research, is a multi-paradigm programming language which is fast, memory efficient with no runtime or garbage collector, can run on embedded systems and can easily integrate with other language.
 
-## Let us install it first
+## <a name=installation>Let us install it first
 
 Please do refer [Installation page](https://www.rust-lang.org/tools/install) but for completion sake, let me install it on my favorite platform WSL(Window Subsystem for Linux)
 
@@ -23,7 +32,7 @@ to verify installation, do check the version
 
 BTW use [Rust Online Editor](play.rust-lang.org) if you are interested in just 'window coding'
 
-## Are we ready to code? why not!
+## <a name=hellorust>Are we ready to code? why not!</a>
 To test if we are ready to explore, create a `hello_rust.rs` and type 
 ```
 fn main()
@@ -42,7 +51,7 @@ run ./hello_rust.exe
 Hey!, I am refreshing rust!!!!
 ```
 
-## Cargo, the package manager to make life easier
+## <a name=cargo>Cargo, the package manager to make life easier </a>
 ### What Cargo does exactly?
 Cargo downloads your Rust package’s dependencies, compiles your packages, makes distributable packages, and uploads them to crates.io, the Rust community’s package registry. 
 
@@ -62,8 +71,17 @@ to compile.On Successful compilation you will notice target folder, run the exec
 Do compile run in one step by 
 >cargo run
 
-However `cargo` helps us doing everything in one go, execute
-> cargo new hello-rust --bin
+### <a name=newproj>Setup New Project : the Cargo Way</a>
+However `cargo` helps us doing everything in one go, it creates all package structure for us. we just need to mention name of project
+> cargo new <project_name> --bin
+
+gives you below structure \
+```
+hello_rust/
+├── Cargo.toml
+└── src
+    └── main.rs
+```
 
 --bin is default, we can give --lib as well
 Above will create hello_rust directory which will have Cargo.toml and src direatory and main.rs inside src.
@@ -73,7 +91,7 @@ cargo build --release
 cargo run // Now we will have exe inside target/release
 ```
 
-### But, what is this Cargo.lock? Which I see along with Cargo.toml?
+### <a name=lock>But, what is this Cargo.lock? Which I see along with Cargo.toml?</a>
 Well, it contains dependency info. Suppose we need regex in our source file. we need to add below in Cargo.toml
 ```
 [dependencies]
@@ -87,9 +105,9 @@ regex = "0.1.41"
 $ cargo update -p rand   # updates just “rand”
  ```
 
-### A look at Cargo Package layout
+### <a name=layout>A look at Cargo Package layout</a>
 ```
-.
+Proj
 ├── Cargo.lock
 ├── Cargo.toml
 ├── src/
@@ -123,7 +141,7 @@ In above structure,
 - Examples go in the examples directory.
 - Integration tests go in the tests directory.
 
-## What bout Test framework?
+## <a name=testframework>What bout Test framework?</a>
 Here we have two kind of tests, Cargo checks unit tests under `src ` directory whereas checks integration tests under `test` directory. And here is the command
 ```
 cargo test // for all the tests
