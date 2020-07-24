@@ -68,6 +68,8 @@ fn main() {
         println!("Not Equal to 7");
     }  
 
+    println!("Print using if/else : {}", if true {"True"} else {"False"});
+
     println!("\n\n =============== LOOPS(loop/for/while) DEMO ============");
     fn invoke_infinte_loop() {
         loop{
@@ -103,12 +105,37 @@ fn main() {
     }
     println!("Loop thrugh array index");
     let sz = a.len();
-    for i in 0..sz {
+    for i in 0..sz { // it can be any start..end
         print!("{}! ", a[i]);
     }
     println!("print in reverse :");
     for i in (0..sz).rev() {
         print!("{}! ", a[i]);
     }
+
+    println!("\nUser enumerate function to iterate over range");
+    for (i, x) in (25..31).rev().enumerate() {
+        println!(" pos[{}] = [{}]", i, x);
+    }
     println!();
+
+    println!("Match demo");
+    let mut num = 2;
+    match num {
+        1 => println!("One"),
+        2 => println!("Two"),
+        3 => println!("Three"),
+        _ => println!("Any Default"),
+    }
+    // can collect values using match as well
+    num = 6;
+    let num_str = match num {
+        1 => "One",
+        2 => "Two",
+        5 => "Five",
+        1...10 => "Not Found!!",
+        _ => "InValid Input",
+    };
+    println!("spell of {} : {}", num, num_str);    
+    
  }

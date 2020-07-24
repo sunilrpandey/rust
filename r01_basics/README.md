@@ -10,7 +10,7 @@
 
 ## Tuples
 contains multiple values, access it using .0,.1 etc
-```
+```rust
     let tup: (i32, f64, u8) = (100, 3.4, 10);
     let tar = tup;
     let (x, y, z) = tup;
@@ -20,7 +20,7 @@ contains multiple values, access it using .0,.1 etc
 
 ## Array
 collection of data of same data types
-```
+```rust
     let names = ["Tom", "Dick", "Harrt"];
     println!("Tom : {}", names[0]);
 
@@ -36,7 +36,7 @@ collection of data of same data types
 Function starts with keyword `fn` 
 ### local function 
 Write function locally and use it. 
-```
+```rust
     fn local_increment_func(mut x:u8) -> u8{x = x + 1; return x;}
     let mut var:u8 = 10;
     var = local_increment_func(var);    
@@ -48,20 +48,23 @@ Write function locally and use it.
 - use this function using file_name::func_name // function_demo::increment here
 - use `use` statement to add function in current scope
 
-## Any Control : Yes, most of you 
+## Controls? : Yes, most of you know
 ### IF Statement
 - () after if optional
 - if, else and multiple if/else similar to C++ etc supported
 - non zero value does not evaluate to bool, gives compilation error 
 - if and else blocks should return same data types else compiler
-```
+```rust
 let number = if true { 1 } else { 0 }; //works
 let number = if true { 1 } else { "false" }; //wont work
-
+```
+- No need to return something from if/else to get back result, here returning string to print
+```rust
+    println!("Print using if/else : {}", if true {"True"} else {"False"});
 ```
 
-### Loop for infinite loop
-```
+### Loop for infinite iteration
+```rust
     loop{
             println!("Infinite loop : press Ctrl + C to quit");
         }
@@ -70,35 +73,55 @@ let number = if true { 1 } else { "false" }; //wont work
 
 ### While loop : similar to C++ etc
 No different from other language
-```
+```rust
     let mut i = 0;
     while i < 5 {
         println!("{}!", i);
         i += 1;
     }
 ```
-### For loop :
+### For loop : The simple and sweet loop
 Iterate through content
-```
+```rust
     let a = [100,200,300,400,500];
     for e in a.iter() {
         print!("{}! ", e);
     }
 ```
-Iterate using container index
-```
+Iterate using container index, it can be any [start..end)
+```rust
     let sz = a.len();
     for i in 0..sz {
         print!("{}! ", a[i]);
     }
 ```
-User rev() for reverse indexing
-```
+Use rev() for reverse indexing
+```rust
     for i in (0..sz).rev() {
         print!("{}! ", a[i]);
     }
 ```
-## Comments Please??
+User enumerate function to iterate over range
+```rust
+for (i, x) in (25..31).rev().enumerate() {
+        println!(" pos[{}] = [{}]", i, x);
+    }
+```
+
+## Match Statement
+Its similar to switch in C++ but syntaxes are little different. Please note no semicolon after options and closing brace for match
+```rust
+    num = 6;
+    let num_str = match num {
+        1 => "One",
+        2 => "Two",
+        5 => "Five",
+        1...10 => "Not Found!!",
+        _ => "InValid Input",
+    };
+    println!("spell of {} : {}", num, num_str);        
+```
+## Any Comments
 - Yes similar to C++ single line - // and multiline using /* */ 
 
 ## Few functions we use very often
@@ -108,3 +131,4 @@ User rev() for reverse indexing
     
 ## Reference 
 [file/module discusstion](https://stackoverflow.com/questions/27613874/how-do-i-tell-cargo-to-build-files-other-than-main-rs)
+[The Rust Book](https://doc.rust-lang.org/book/ch03-00-common-programming-concepts.html)
