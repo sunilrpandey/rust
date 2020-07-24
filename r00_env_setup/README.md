@@ -150,8 +150,8 @@ cargo test specific_test
 
 ## More to come ...
 
-## References
+## References :
 
-[RUST the org](http://rust-lang.org)
-
-[Cargo](https://doc.rust-lang.org/cargo/index.html)
+[RUST the org](http://rust-lang.org)\
+[Cargo Ref](https://doc.rust-lang.org/cargo/index.html)\
+[RUST the Book](https://doc.rust-lang.org/book/title-page.html)
