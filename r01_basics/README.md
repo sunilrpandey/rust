@@ -5,16 +5,16 @@
 - [Functions](#functions)
 - [Conditional Controls](#controls)
     - [If/Else Statment](#if)
-    - [Match Statement](match)
+    - [Match Statement](#match)
 - [Iterative Controls](#looping)
     - [Loop](#loop)
     - [While loop](#while)
     - [For Loop](#for)
 - [Comments](#comments)
-
 - [Utility functions we use very often](#extra)
 - [References](#reference)
-## <a name=datatype>Basic Data types
+
+## <a name=datatype>Basic Data types</a>
 
 * Rust datatype are similar to i8, u16, i64, u128 etc
 * Varibales are read only by default, use `mut` if you want to modify
@@ -32,7 +32,6 @@ contains multiple values, access it using .0,.1 etc
     println!("x = {}, y = {} , z = {}", x,y,z);
     println!("x = {}, y = {} , z = {}", tar.0,tar.1,tar.2);
 ```
-
 ## <a name=array>Array</a>
 collection of data of same data types
 ```rust
@@ -135,7 +134,7 @@ for (i, x) in (25..31).rev().enumerate() {
         println!(" pos[{}] = [{}]", i, x);
     }
 ```
-
+> break/continue works for looping just like other languages.
 ## <a name=comments>Any Comments</a>
 - Yes similar to C++ single line - // and multiline using /* */ 
 
@@ -143,7 +142,29 @@ for (i, x) in (25..31).rev().enumerate() {
     * mem::size_of_val(&var)
     * var = 2 + 4 + 7 or 2|4 or 3<<5>>
     * i32::pow(a,3) or f64::powf(2.5,std::f64::consts::PI)
+One can use index of params to print in differnt order, here I am printing pos as [x,z,y]
+> println!("Pos : [{0},{2},{1}]", ps.0,ps.1,ps.2);
+
+Write below line just before struct to print struct object using {:?}
+>  #[derive(Debug)]
+
+One can pass tuples as function parameter
+```rust
+    fn area(dimensions: (u32, u32)) -> u32 {
+        dimensions.0 * dimensions.1
+}
+```
+> For array indices use idx: usize 
+
+## Compiler related commands
+    * add below line to remove dead_code warning on top of the file
+    > #![allow(dead_code)]
+    * compile a test.rs by using compiler utility, no need to do cargo build
+    > rustc -A dead_code main.rs    //-A dead_code is used to remove `dead_code` warning
+    * Use RUSTFLAGS on cargo build to apply on whole codebase
+    > RUSTFLAGS="$RUSTFLAGS -A dead_code" cargo build 
     
 ## <a name=reference>References</a>
+[RUSTC Documentation](https://doc.rust-lang.org/rustc/what-is-rustc.html) 
 [file/module discusstion](https://stackoverflow.com/questions/27613874/how-do-i-tell-cargo-to-build-files-other-than-main-rs)
 [The Rust Book](https://doc.rust-lang.org/book/ch03-00-common-programming-concepts.html)

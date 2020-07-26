@@ -70,17 +70,17 @@ fn main() {
 
     println!("Print using if/else : {}", if true {"True"} else {"False"});
 
-    println!("\n\n =============== LOOPS(loop/for/while) DEMO ============");
+    println!("\n\n=============== LOOPS(loop/for/while) DEMO ============");
     fn invoke_infinte_loop() {
         loop{
             println!("Infinite loop : press Ctrl + C to quit");
         }
     }
-    // invoke_infinte_loop();
 
+    // invoke_infinte_loop();
     // return value from loop, but return value using break, not return 
     let mut cnt = 0;
-    let ret_from_loop = loop{
+    let ret_from_loop = loop {
         cnt += 1;
         if cnt == 10 {
             break cnt;
@@ -89,7 +89,7 @@ fn main() {
     println!("ret from loop : {}", ret_from_loop);
 
     // while loop demo, loop through until some condition or loop through some container
-    println!(" while loop demo");
+    println!("While loop demo");
     let mut i = 0;
     while i < 5 {
         println!("{}!", i);
