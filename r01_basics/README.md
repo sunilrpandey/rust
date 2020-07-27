@@ -96,6 +96,7 @@ Its similar to switch in C++ but syntaxes are little different. Please note no s
             println!("Infinite loop : press Ctrl + C to quit");
         }
 ```
+- loop can be nested and have lables such as outer:loop and inner:loop, and break can come out of innermost loop using outer:label
 - Return value from loop on some contion, but return value using break, not return
 
 ### <a name=while>While loop : similar to C++ etc</a>
@@ -128,7 +129,7 @@ Use rev() for reverse indexing
         print!("{}! ", a[i]);
     }
 ```
-User enumerate function to iterate over range
+User enumerate function to iterate over range, a..=b means b will be included else not included
 ```rust
 for (i, x) in (25..31).rev().enumerate() {
         println!(" pos[{}] = [{}]", i, x);

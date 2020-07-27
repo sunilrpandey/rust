@@ -1,3 +1,4 @@
+mod misc;
 mod function_demo;
 use function_demo::increment;
 
@@ -8,6 +9,11 @@ fn out_function_inc_by2(mut x:u8) -> u8{
 }
 
 fn main() {
+
+    misc::print_demo();
+    misc::ret_value_without_return_increment();
+    return;
+
     //data types declaration;
     let x:u8 = 10;
     let mut y = 0;
