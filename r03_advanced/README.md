@@ -102,3 +102,144 @@ fn sum_of_sqrd_odd_numbers_under_1000() -> i32{
     println!("HOF sum result : {}", hof_sum);
 } 
 ```
+## Traits
+A trait is a collection of methods defined for an unknown type: Self. They can access other methods declared in the same trait.
+Traits are very similar to concept of interface in C++. Traits can be implemented for any data type
+For example I define few methods for Shape trait
+```rust
+trait Shape
+    {
+        fn create(in_name:&'static str) -> Self;
+        fn name(&self)->&'static str;
+        fn render(&self) {
+            println!("{} abstract shape, can't render",self.name());
+        } 
+    }
+```
+Now we have Shape such as Square(as struct) and we implement shape traits for Square
+```rust
+    impl Shape for Square 
+    {
+        fn create(in_name:&'static str) -> Square
+        {
+            Square{name:in_name}
+        }
+        fn name(&self)->&'static str {
+            self.name
+        }
+        fn render(&self) {
+            println!("{} rendered.",self.name());
+        }
+    }
+    struct Square
+    {
+        name:&'static str
+    }
+```
+and here how we can use Square
+```rust
+    let shape:Square = Square{name:"My Square"}; OR
+    let shape:Square = Shape::create("My Square");
+    shape.render();    
+```
+### Generic Traits
+```rust 
+    trait Summable<T>
+    {
+        fn sum(&self) -> T;
+    }
+```
+Now we apply above trait to a Vector
+```rust 
+    impl Summable<i32> for Vec<i32>
+    {
+        fn sum(&self) -> i32 {
+            let mut result = 0;
+            for i in self {
+                result += *i;
+            }
+            return result;
+        }
+    }
+```
+Now Let us test methods from trait to check Vec
+```rust
+    let v = vec![30,20,10];
+    println!("Sum of elements : {}", v.sum());
+```
+
+## Ownership & Moves
+Rust follows move semantics to maintain ownership of the storage. However For basic integral type it follow copy traits instead of move.
+For example, take and example of vector
+```rust
+    let v1 = vec![1,2,3];
+    println!("v1 = {:?}",v1);
+    let v2 = v1;
+    println!("v2 = {:?}",v2);
+    
+Now below line will give error since v1 no longer owns the storage for vector
+    //println!("v1 = {:?}",v1);
+``` 
+Let us what happens with integral types
+```rust
+    // Let us see what happens with integral type
+    let i = 32;
+    let j = i;
+    println!("Here both exists i = {} & j = {}", i, j);
+
+    //Now let us explicitly assign memory to it
+    let i = Box::new(32);
+    let j = i;
+    //println!("Wont compile as value of i is borrowed  i = {} & j = {}", *i, *j);
+```
+May be we can return from a function to which we passed ownership
+```rust
+    fn show_vector(v:Vec<i32>) -> Vec<i32>{
+        println!("show vec : {:?}",v);
+        v
+    }
+
+```
+And here is how vector can be passed and collected
+```rust 
+    fn borrow_and_return_test() {
+
+        let v = vec![12,23,45];
+        let v = show_vector(v);
+        println!("returned vec : {:?}",v);
+
+    }
+```
+### Pass reference 
+Passing and returing is pain, so we pass by reference, Please not you can not modify vec ref in show_vec_ref function
+```rust
+    fn show_vector_ref(v:&Vec<i32>){
+        println!("vec (ref): {:?}",v);
+        //v.push(100);      //Not possibe, ref is not mutable
+    }
+```
+..and here is how we pass and collect
+```rust
+    fn pass_by_ref_test() {
+
+        let v = vec![12,23,45];
+        show_vector_ref(&v);
+        println!("returned vec (ref) : {:?}",v);
+
+    }
+```
+### Pass mut reference
+To pass ref as mutable write mut after `&`
+```rust
+    fn show_vector_mut_ref(v:&mut Vec<i32>){
+        println!("vec (mut ref): {:?}",v);
+        v.push(100);
+    }
+
+    fn pass_by_mut_ref_test() {
+
+        let mut v = vec![12,23,45];
+        show_vector_mut_ref(&mut v);
+        println!("returned vec (mut ref) : {:?}",v);
+    }
+```
