@@ -1,0 +1,11 @@
+[package]
+name = "r04_create_lib_test"
+version = "0.1.0"
+authors = ["Sunil Pandey <inkingmind@gmail.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rand = "0.7.3" # rand lib from crate.io
+local_lib = {path = "../r04_create_lib"} # library created
