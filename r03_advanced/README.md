@@ -1,12 +1,12 @@
 # RUST Advanced Features
 
-- [ ] [Closure](#closure)
-- [ ] [High Order Functions](#hof)
-- [ ] [Traits](#traits)
-    - [Generic Traits](#generic)
 - [ ] [Ownership & Moves](#ownership)
-- [ ] [Pass reference](#passref)
-- [ ] [Pass mut reference](#passmutref)
+    - [ ] [Pass reference](#passref)
+    - [ ] [Pass mut reference](#passmutref)
+- [ ] [Closure](#closure)
+- [ ] [Traits](#traits)
+    - [ ] [Generic Traits](#generic)
+- [ ] [High Order Functions](#hof)
 
 ## <a name=closure>Closure</a>
 also called lambda, good for defining on the fly functions, input variables are taken in || insetead of {}
