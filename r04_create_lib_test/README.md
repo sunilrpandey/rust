@@ -1,7 +1,16 @@
 # MISC Features
 
-## RUST Library 
-### Create Library
+- [ ] [Rust Lib](#rustlib)
+    - [ ] [Create Lib](#create)
+    - [ ] [Use Lib](#use)
+- [ ] [Use Cargo the Package Manager](#libcargo)
+    - [ ] [Import Lib](#importcargo)
+    - [ ] [Create Lib](#createcargo)
+    - [ ] [Use Lib](#usecargo)
+
+
+## <a name=rustlib>RUST Library </a>
+### <a name=create>Create Library</a>
 Write function in a file (say func_lib.rs)
 ```rust
     pub fn first_lib_function() -> u8{
@@ -20,7 +29,7 @@ rustc --crate-type=lib func_lib.rs
 Library is created, name would be lib<mod_name>.rlib(i.e. for func_lib, it would be libfunc_lib.rlib) 
 Please make sure your functions and mod in lib source file is accessible (pub)
 
-### Use library 
+### <a name=use>Use library </a>
 Now got to main.rs and add 
 ```rust
     extern crate <lib_file_name>;
@@ -36,8 +45,8 @@ rustc main.rs --extern func_lib=libfunc_lib.rlib
 I will give you executable which uses lib.
 Thats it.
 
-## Use Cargo to create/use lib
-### Create lib
+## <a name=libcargo>Use Cargo to create/use lib</a>
+### <a name=createcargo>Create lib</a>
  1. Create lib project using
 
     cargo new --lib <lib_name> //local_lib
@@ -53,10 +62,16 @@ Thats it.
  3. build the lib
 
     cargo build
+### <a name=importcargo>Import lib</a>
+- [ ] Download library from crate.io (https://crates.io/) 
+- [ ] Upadate dependencies in Cargo.toml by adding lib and its version
+    ```rust
+    [dependencies]
+    rand = "0.7.3" // rand lib from crate.io
+    ```
 
-### Use lib
- 1. Go to client/Cargo.toml and add dependencies of just created local libray.
- You can also add downloaded library from crate.io (https://crates.io/) 
+### <a name=usecargo>Use lib</a>
+ 1. Update dependencies in Client/Cargo.toml by adding just created local libray and its relative path
  ```rust
     [dependencies]
     rand = "0.7.3" // rand lib from crate.io

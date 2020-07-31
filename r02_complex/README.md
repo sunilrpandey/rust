@@ -1,13 +1,13 @@
 # Complex Types and More
 
 - [ ] [Struct](#struct)
-- [ ] [Update Syntax](#updatesyntax)
-- [ ] [Tuple Struct](#tuplestruct)
+    - [ ] [Update Syntax](#updatesyntax)
+    - [ ] [Tuple Struct](#tuplestruct)
 - [ ] [Enums](#enums)
 - [ ] [Matching with Option](#match)
 - [ ] [If let / while let](#iflet)
 - [ ] [Conversion/Casting](#conversion)
-    - [Type Conversion using from/into](#frominto)
+    - [ ] [Type Conversion using from/into](#frominto)
 - [ ] [String](#string)
 - [ ] [Misc](#misc)
 

@@ -1,6 +1,7 @@
 # RUST Advanced Features
 
-- [ ] [Ownership & Moves](#ownership)
+- [ ] [Ownership](#ownership)
+    - [ ] [Move](#ownership)
     - [ ] [Pass reference](#passref)
     - [ ] [Pass mut reference](#passmutref)
 - [ ] [Closure](#closure)
