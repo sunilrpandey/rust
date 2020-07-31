@@ -1,8 +1,8 @@
-# Data Types
-- [Console Outp -> println](#println)
-- [Basic Types](#datatype)
-- [Tuples](#tuple)
+# Basics
+- [Console Outpput -> println](#println)
+- [Basic Data Types](#datatype)
 - [Array](#array)
+- [Tuples](#tuple)
 - [Functions](#functions)
 - [Conditional Controls](#controls)
     - [If/Else Statment](#if)
@@ -52,15 +52,6 @@ impl fmt::Display for TupleStructFmtDisplay {
         let y = 2u32;
     ```
 
-## <a name=tuple>Tuples</a>
-contains multiple values, access it using .0,.1 etc
-```rust
-    let tup: (i32, f64, u8) = (100, 3.4, 10);
-    let tar = tup;
-    let (x, y, z) = tup;
-    println!("x = {}, y = {} , z = {}", x,y,z);
-    println!("x = {}, y = {} , z = {}", tar.0,tar.1,tar.2);
-```
 ## <a name=array>Array</a>
 collection of data of same data types
 ```rust
@@ -73,6 +64,15 @@ collection of data of same data types
 
     let arr_of_3 = [3;5];
     println!("first element : {}", arr_of_3[0]);
+```
+## <a name=tuple>Tuples</a>
+contains multiple values, access it using .0,.1 etc
+```rust
+    let tup: (i32, f64, u8) = (100, 3.4, 10);
+    let tar = tup;
+    let (x, y, z) = tup;
+    println!("x = {}, y = {} , z = {}", x,y,z);
+    println!("x = {}, y = {} , z = {}", tar.0,tar.1,tar.2);
 ```
 
 ## <a name=functions>Functions</a>
