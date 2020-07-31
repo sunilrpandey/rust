@@ -164,7 +164,7 @@ let five = String::from("5");
 
 assert_eq!(five, i.to_string());
 ```
-### <a name=/frominto>Make Type convertible using From/Into traits</a>
+### <a name=frominto>Make Type convertible using From/Into traits</a>
 Uses `from` and `into` traits
 ### From
 Create itself from other type
