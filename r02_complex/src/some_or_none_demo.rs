@@ -8,6 +8,20 @@ fn division_by_zero(nr:f64, dr:f64) {
     }
 }
 
+fn iflet_whilelet_demo() {
+    println!("Demo : Vector with while-let");
+    let mut a = vec![1,2,3];
+    while let Some(x) = a.pop() {
+        println!("{}",x);
+    }
+    if let None = a.pop() {
+        println!("all done");
+    } else {
+        println!("something left");
+    }
+
+}
+
 pub fn options_test()
 {
     let nr = 3.0;
@@ -15,10 +29,8 @@ pub fn options_test()
 
     division_by_zero(nr,dr);    
 
-    println!("Demo : Vector with while-let");
-    let mut a = vec![1,2,3];
-    while let Some(x) = a.pop() {
-        println!("{}",x);
-    }
+    iflet_whilelet_demo();
+
+    
 }
 

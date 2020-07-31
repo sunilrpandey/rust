@@ -10,13 +10,12 @@ fn change_element(slice:&mut[i32]){
 
 pub fn slice_array_int_test() {
     let mut a = [1,2,3,4,5,6,7];
-    //slice_int(&a[1..4]);
+    slice_int(&a[1..4]);
     change_element(&mut a[1..4]);
     println!("array -> {:?}", a);
 }
 
-pub fn string_test() {
-
+fn iterate_through_const_string() {
     let qt:&'static str = "Honesty is the best policy";
     println!("{}",qt);
 
@@ -24,5 +23,11 @@ pub fn string_test() {
         println!("{}",word);
     }
 
+}
+
+pub fn string_test() {
+
+    slice_array_int_test();
+    iterate_through_const_string();    
     
 }
