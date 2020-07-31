@@ -1,4 +1,5 @@
 # Data Types
+- [Console Outp -> println](#println)
 - [Basic Types](#datatype)
 - [Tuples](#tuple)
 - [Array](#array)
@@ -14,6 +15,29 @@
 - [Utility functions we use very often](#extra)
 - [References](#reference)
 
+## println
+Printing is handled by a series of macros defined in std::fmt some of which include:
+* println! is a macro that prints text to the console.
+* print is same except it does not append new line
+* eprint!/eprintln! are same as print! version except it outputs to io::stderr instead of io::stdout
+* println can have positional arguments
+println!("{0}, this is {1}. {1}, this is {0}", "first", "second");
+* println can also use named arguments
+* println!("{subject} {verb} {object}",
+             object="the best policy",
+             subject="Honesty",
+             verb="is");
+* {:b} used for binary representation
+* To print custom data type add `#[derive(Debug)]` just before struct type and print usign "{:?}" or pretty print using "{:#?}" 
+* or implemnt fmt::Display for Custom Types
+```rust
+impl fmt::Display for TupleStructFmtDisplay {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        write!(f,"Using Custom Display : {}", self.0)
+    }
+}
+``` 
+
 ## <a name=datatype>Basic Data types</a>
 
 * Rust datatype are similar to i8, u16, i64, u128 etc
@@ -22,6 +46,11 @@
 * var:isize refer to any integer type
 * few utility functions and hwo we  
 * for const use `const MAX_VAL: u32 = 10_000;` datatype is necessary, _  can be used for readability
+* x:i32  can be assigned 3 as 
+    ```rust
+        let x = 3i32
+        let y = 2u32;
+    ```
 
 ## <a name=tuple>Tuples</a>
 contains multiple values, access it using .0,.1 etc
@@ -62,6 +91,12 @@ Write function locally and use it.
 - use this function using file_name::func_name // function_demo::increment here
 - use `use` statement to add function in current scope
 
+### No need to return value, just dont put `;` after value to return
+```rust
+fn increment(val:i32) -> i32 {
+    val + 1
+}
+```
 ## <a name=controls>Conditional Controls</a>
 ### <a name=if>IF Statement</a>
 - () after if is optional
@@ -158,14 +193,22 @@ One can pass tuples as function parameter
 > For array indices use idx: usize 
 
 ## Compiler related commands
+    * Unused variable bindings; these warnings can be silenced by prefixing the variable name with an underscore
     * add below line to remove dead_code warning on top of the file
     > #![allow(dead_code)]
     * compile a test.rs by using compiler utility, no need to do cargo build
     > rustc -A dead_code main.rs    //-A dead_code is used to remove `dead_code` warning
     * Use RUSTFLAGS on cargo build to apply on whole codebase
     > RUSTFLAGS="$RUSTFLAGS -A dead_code" cargo build 
-    
+
+## Constructs to silent warning
+#![allow(unused_variables)]\
+#![allow(unused_imports)]\
+#[allow(non_camel_case_types)]\
+#![allow(overflowing_literals)]\
+
 ## <a name=reference>References</a>
 [RUSTC Documentation](https://doc.rust-lang.org/rustc/what-is-rustc.html) 
 [file/module discusstion](https://stackoverflow.com/questions/27613874/how-do-i-tell-cargo-to-build-files-other-than-main-rs)
 [The Rust Book](https://doc.rust-lang.org/book/ch03-00-common-programming-concepts.html)
+[Rust by Example](https://doc.rust-lang.org/stable/rust-by-example/index.html)
