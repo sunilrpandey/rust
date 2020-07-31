@@ -23,6 +23,11 @@ impl From<f64> for Point {
 
     }
 }
+impl Into<f64> for Point {
+    fn into (self) ->f64 {
+        self.x
+    }
+}
 #[derive(Debug)]
 struct Line
 {
@@ -93,6 +98,9 @@ fn struct_funcs_and_convertion_func_demo() {
     println!("Demoing Conversion from float to Point");
     let p7 = Point::from(30.0);
     p7.show();
+
+    let flt:f64 = p7.into();
+    println!("sym point is : [{},{},{}]",flt,flt,flt );
 }
 
 
