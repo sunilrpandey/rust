@@ -1,6 +1,14 @@
 # RUST Advanced Features
 
-## Closure
+- [ ] [Closure](#closure)
+- [ ] [High Order Functions](#hof)
+- [ ] [Traits](#traits)
+    - [Generic Traits](#generic)
+- [ ] [Ownership & Moves](#ownership)
+- [ ] [Pass reference](#passref)
+- [ ] [Pass mut reference](#passmutref)
+
+## <a name=closure>Closure</a>
 also called lambda, good for defining on the fly functions, input variables are taken in || insetead of {}
 input variables, return types are inferred
 ```rust
@@ -64,7 +72,7 @@ Writing `mem::drop(new_int)` in closure makes sure that movable object is destro
     //println!("s is moved : {}", s);
     msg_print();
 ```
-## High Order Functions
+## <a name=hof>High Order Functions</a>
 Takes two or more functions and provide more useful functionality.
 Let us take an example, suppose we have to find the sum of all the squared odd numbers under 1000 
 Here is the classic approch
@@ -102,7 +110,7 @@ fn sum_of_sqrd_odd_numbers_under_1000() -> i32{
     println!("HOF sum result : {}", hof_sum);
 } 
 ```
-## Traits
+## <n name=traits>Traits</a>
 A trait is a collection of methods defined for an unknown type: Self. They can access other methods declared in the same trait.
 Traits are very similar to concept of interface in C++. Traits can be implemented for any data type
 For example I define few methods for Shape trait
@@ -142,7 +150,7 @@ and here how we can use Square
     let shape:Square = Shape::create("My Square");
     shape.render();    
 ```
-### Generic Traits
+### <a name=generic>Generic Traits</a>
 ```rust 
     trait Summable<T>
     {
@@ -168,7 +176,7 @@ Now Let us test methods from trait to check Vec
     println!("Sum of elements : {}", v.sum());
 ```
 
-## Ownership & Moves
+## <a name=ownership>Ownership & Moves</a>
 Rust follows move semantics to maintain ownership of the storage. However For basic integral type it follow copy traits instead of move.
 For example, take and example of vector
 ```rust
@@ -210,7 +218,7 @@ And here is how vector can be passed and collected
 
     }
 ```
-### Pass reference 
+### <a name=passref>Pass reference </a>
 Passing and returing is pain, so we pass by reference, Please not you can not modify vec ref in show_vec_ref function
 ```rust
     fn show_vector_ref(v:&Vec<i32>){
@@ -228,7 +236,7 @@ Passing and returing is pain, so we pass by reference, Please not you can not mo
 
     }
 ```
-### Pass mut reference
+### <a name=passmutref>Pass mut reference</a>
 To pass ref as mutable write mut after `&`
 ```rust
     fn show_vector_mut_ref(v:&mut Vec<i32>){
