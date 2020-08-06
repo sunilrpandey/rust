@@ -2,6 +2,8 @@
 fn lambdatest()
 {
     let v = vec![10,20,30];
+    
+    //lambda function
     let foo = |v:Vec<i32>|();
     foo(v);
     
@@ -18,7 +20,6 @@ fn borrow_and_return_test() {
     let v = vec![12,23,45];
     let v = show_vector(v);
     println!("returned vec : {:?}",v);
-
 }
 fn show_vector_ref(v:&Vec<i32>){
     println!("vec (ref): {:?}",v);
@@ -32,6 +33,7 @@ fn pass_by_ref_test() {
     let v = vec![12,23,45];
     show_vector_ref(&v);
     println!("returned vec (ref) : {:?}",v);
+    // v.push(100);
 
 }
 
@@ -47,13 +49,7 @@ fn pass_by_mut_ref_test() {
     println!("returned vec (mut ref) : {:?}",v);
 
 }
-pub fn ownership_borrowing_test()
-{
-    pass_by_ref_test();
-    pass_by_mut_ref_test();
-    return;
-    borrow_and_return_test();
-    lambdatest();
+fn mv_ownership_demo() {
     let v = vec![1,2,3];    
     println!("v = {:?}",v);
     let v2 = v;
@@ -70,4 +66,19 @@ pub fn ownership_borrowing_test()
     let j = i;
     //println!("Wont compile as value of i is borrowed  i = {} & j = {}", *i, *j);
  
+}
+pub fn ownership_borrowing_test()
+{
+    // move ownership
+    //mv_ownership_demo();
+    
+    //Just as C++ , but cant change passing 
+    pass_by_ref_test();
+    pass_by_mut_ref_test();
+    borrow_and_return_test();
+    // lambdatest();
+    return;
+    
+    
+    
 }

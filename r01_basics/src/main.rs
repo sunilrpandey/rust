@@ -31,7 +31,7 @@ fn tuple_demo() {
     
     let tup: (i32, f64, u8) = (100, 3.4, 10);
     let tar = tup;
-    let (x, y, z) = tup;
+    let (x, y, z) = tup; // destructuring
     println!("x = {}, y = {} , z = {}", x,y,z); 
     println!("x = {}, y = {} , z = {}", tar.0,tar.1,tar.2);
 }

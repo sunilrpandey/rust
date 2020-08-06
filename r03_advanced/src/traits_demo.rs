@@ -1,13 +1,11 @@
-trait Shape
-{
+trait Shape {
     fn create(in_name:&'static str) -> Self;
     fn name(&self)->&'static str;
     fn render(&self) {
         println!("{} abstract shape, can't render",self.name());
     } 
 }
-impl Shape for Square 
-{
+impl Shape for Square {
     fn create(in_name:&'static str) -> Square
     {
         Square{name:in_name}
@@ -58,9 +56,24 @@ impl Summable<i32> for Vec<i32>
     }
 }
 
+#[derive(Clone)] // we add the Clone trait to MyStruct
+struct MyStruct {
+   mem_f: f32,
+   mem_i: i64,
+}
+
+fn use_lib_traits() {
+   let st = MyStruct { mem_f: 5.0, mem_i: 6 };
+   //let copy = st;
+   //let copy = &st;
+   let copy = st.clone(); // clone it!
+   println!("copy : [{},{}]",copy.mem_f,copy.mem_i);
+   println!("st : [{},{}]",st.mem_f,st.mem_i);
+}
+
 pub fn traits_test() {
     
-    //let shape:Square = Square{name:"My Square"};
+/*     //let shape:Square = Square{name:"My Square"};
     let shape:Square = Shape::create("My Square");
     shape.render();
     
@@ -69,4 +82,6 @@ pub fn traits_test() {
 
     let v = vec![30,20,10];
     println!("Sum of elements : {}", v.sum());
+ */
+    use_lib_traits();
 }

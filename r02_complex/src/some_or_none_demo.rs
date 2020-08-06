@@ -25,11 +25,11 @@ fn iflet_whilelet_demo() {
 pub fn options_test()
 {
     let nr = 3.0;
-    let dr = 2.0;
+    let dr = 0.0;
 
     division_by_zero(nr,dr);    
 
-    iflet_whilelet_demo();
+    // iflet_whilelet_demo();
 
     
 }

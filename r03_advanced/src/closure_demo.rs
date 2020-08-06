@@ -10,18 +10,21 @@ fn closure_pass_value_test()
 {
     let color = String::from("green");
     
-    // ------------this works 
-    let cl_print = || println!("Color : {}", color);
+    // closure without arg works
+    let cl_print = || println!("Color : {}", color); // will work as taking global value to read
+    // let cl_print = |color:String| println!("Color : {}", color); 
     cl_print();
+
     println!("Locked by closure : {}", color);
     cl_print();
     //----------
 
     let _reborrow = &color; // copying the reference 
+    // let _color_moved = color;       // not allowed (see next cl_print)
+    
     // moving the object : not allowed as it is will be used by next refernce of closure function
     // below line will not give error if we remove next cl_print() call
-    // off course it will not matter if color is u8/i32 as move does not matter for these types
-    //let _color_moved = color;      
+    // off course it will not matter if color is u8/i32 as move does not matter for these types    
     cl_print(); 
 
     //----------------------- 
@@ -57,62 +60,52 @@ fn closure_pass_value_test()
     let msg_print = move || println!("Message : {}", s);
 
     msg_print();
-    // 
-    //println!("s is moved : {}", s);
+    
+    // println!("s is moved : {}", s);
     msg_print();
-
-
-    
-
-    
-
 
 }
 
-pub fn closure_test() {
-    println!("Demoing Closure!!");
+fn hello_closure() {
+        // use lambda/closure to do mimic online function
+        let increment_by_1 = |x:u8| x+1;  //brace is optional for single line statment
 
-    closure_pass_value_test();
-    return;
+        let x = 5;
+        println!("{} + 1 = {}", x, increment_by_1(x));
+    
+        let x = 10;
+        let y = 20;
+        let add_two_nums = |x,y| x+y;  //brace is optional for single line statment
+        println!("{} + {} = {}", x, y, add_two_nums(x,y));
+        // -----------------------
+        
+        let mut factor = 2; 
+        {
+            let increment_by_2 = |x:u8| -> u8 { 
+                let mut z = x;
+                z += factor;   
+                z
+            }; 
+    
+            println!("{} + {} = {}", x,factor, increment_by_2(x));
+        }
 
-    // call function or assign it to variable and
-    say_hello();
+        // let borrow_factor = &mut factor; // It will wait factor to be freed, for this we have put incrment by function in scope
+    
+    
+}
 
-    let sh = say_hello;
-    sh();
-
-
-    //----
-    let increment_by_1 = |x:u8| x+1;  //brace is optional for single line statment
-
-    let x = 5;
-    println!("{} + 1 = {}", x, increment_by_1(x));
-
+fn closure_passby_mut_val() {
     let x = 10;
-    let y = 20;
-    let add_two_nums = |x,y| x+y;  //brace is optional for single line statment
-    println!("{} + {} = {}", x, y, add_two_nums(x,y));
-    // -----------------------
-    
+    let increment_by_4 = |mut x:i32| {
+        x += 4;
+        println!("Inside closure, x : {}", x);                
+    };
+    increment_by_4(x);
+    println!("Outside closure, x : {}", x);                
+}
 
-    let mut factor = 2; 
-    {
-        let increment_by_2 = |x:u8| -> u8 { 
-            let mut z = x;
-            z += factor;   
-            z
-        }; 
-
-        println!("{} + {} = {}", x,factor, increment_by_2(x));
-    }
-
-    let borrow_factor = &mut factor; // It will wait factor to be freed, for this we have put incrment by function in scope
-    
-    // Three way to pass arguments
-    // pass by value 
-    // pass by ref
-    // pass by &mut ref
-
+fn closure_passby_mut_ref() {
     // pass by mut ref
     let increment_by_3 = |x:&mut i32| {
         *x += 3;
@@ -121,16 +114,30 @@ pub fn closure_test() {
 
     let mut x = 10;
     increment_by_3(&mut x);
-    println!("Passing by mut ref to increment it by 3, Ans : {}", x );
+    println!("Passing by mut ref to increment it by 3, Ans : {}", x );    
+}
 
-    let x = 10;
-    let increment_by_4 = |mut x:i32| {
-        x += 4;
-        println!("Inside closure, x : {}", x);                
-    };
-    increment_by_4(x);
-    println!("Outside closure, x : {}", x);                
+
+
+pub fn closure_test() {
+    println!("Demoing Closure!!");
+
+    // call function or assign it to variable and run
+    say_hello();
+    let sh = say_hello;
+    sh();
+
+    hello_closure();
+
+    // Three way to pass arguments
+    
+    // pass by value 
+    closure_pass_value_test();
+    // pass by &mut ref
+    //closure_passby_mut_ref();
+    // pass by ref
+    // closure_passby_mut_val();
+    return;
   
-
 }
 

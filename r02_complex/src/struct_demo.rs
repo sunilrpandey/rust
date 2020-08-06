@@ -11,6 +11,12 @@ struct Point
     z:f64
 }
 impl Point {
+    fn new() -> Self {
+        Point{x:100.0, y:200.0, z:300.0}
+    }
+}
+
+impl Point {
     fn show(&self) {
         println!("Pos : [{},{},{}]",self.x,self.y,self.z);
     }
@@ -28,6 +34,7 @@ impl Into<f64> for Point {
         self.x
     }
 }
+
 #[derive(Debug)]
 struct Line
 {
@@ -92,7 +99,8 @@ fn init_struct_demo() {
 fn struct_funcs_and_convertion_func_demo() {
     
     //implement a member function, can have multiple impl block
-    let p6 = Point{x:100.0,y:200.0,z:300.0};
+    //let p6 = Point{x:100.0,y:200.0,z:300.0};
+    let p6 = Point::new();
     p6.show();
 
     println!("Demoing Conversion from float to Point");
@@ -120,10 +128,10 @@ fn tuple_struct_demo() {
 pub fn rust_struct_demo() {
 
     //init, access, assign 
-    init_struct_demo();
+    // init_struct_demo();
 
     //tuple-struct : create struct without named fields
-    tuple_struct_demo();
+    // tuple_struct_demo();
 
     //implemnt member func and from to make it conversion compliant
     struct_funcs_and_convertion_func_demo();   

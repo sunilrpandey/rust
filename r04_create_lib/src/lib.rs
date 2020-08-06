@@ -11,10 +11,8 @@ pub mod func_lib {
             2
         }
 }
-/*
 #[test]
 fn lib_test_first() {
     assert_eq!(1, func_lib::first_lib_function());
 }
-*/
 
