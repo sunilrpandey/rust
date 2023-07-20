@@ -1,3 +1,7 @@
+
+// Implementing the fmt::Display trait automatically implements the ToString trait which allows us to convert the type to String.
+// #[allow(dead_code)] is an attribute which only apply to the module after it.
+
 mod misc;
 mod function_demo;
 use function_demo::increment;
@@ -24,7 +28,7 @@ fn basic_expression_demo () {
     println!("y = {} & is y equals to 14 : {}",y, (y == 14));
     println!("3^4 = {}",i32::pow(3,4));
     println!("3.5^pi = {}",f64::powf(3.5,std::f64::consts::PI));
-
+    println!("x = {x}",x = 18);
 }
 
 fn tuple_demo() {
@@ -128,7 +132,7 @@ fn controls_match_demo() {
     }
     // can collect values using match as well
     num = 6;
-    let num_str = match num {
+    let num_str: &str = match num {
         1 => "One",
         2 => "Two",
         5 => "Five",
@@ -168,7 +172,6 @@ fn controls_for_loop_demo() {
 fn main() {
 
     println!("Welcom to Rust!!");
-/*
     misc::print_demo();
     misc::ret_value_without_return_increment();
     // Later, Once traits is done 
@@ -189,5 +192,4 @@ fn main() {
     controls_while_loop_demo(); 
     controls_for_loop_demo(); 
     controls_match_demo();   
-*/        
  }
