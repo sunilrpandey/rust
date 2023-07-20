@@ -70,13 +70,13 @@ fn mv_ownership_demo() {
 pub fn ownership_borrowing_test()
 {
     // move ownership
-    //mv_ownership_demo();
+    mv_ownership_demo();
     
     //Just as C++ , but cant change passing 
     pass_by_ref_test();
     pass_by_mut_ref_test();
     borrow_and_return_test();
-    // lambdatest();
+    lambdatest();
     return;
     
     

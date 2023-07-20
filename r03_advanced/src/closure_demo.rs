@@ -134,9 +134,9 @@ pub fn closure_test() {
     // pass by value 
     closure_pass_value_test();
     // pass by &mut ref
-    //closure_passby_mut_ref();
+    closure_passby_mut_ref();
     // pass by ref
-    // closure_passby_mut_val();
+    closure_passby_mut_val();
     return;
   
 }

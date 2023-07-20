@@ -73,7 +73,7 @@ fn use_lib_traits() {
 
 pub fn traits_test() {
     
-/*     //let shape:Square = Square{name:"My Square"};
+   //let shape:Square = Square{name:"My Square"};
     let shape:Square = Shape::create("My Square");
     shape.render();
     
@@ -82,6 +82,6 @@ pub fn traits_test() {
 
     let v = vec![30,20,10];
     println!("Sum of elements : {}", v.sum());
- */
+
     use_lib_traits();
 }
