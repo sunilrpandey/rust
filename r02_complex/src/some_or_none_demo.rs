@@ -29,7 +29,7 @@ pub fn options_test()
 
     division_by_zero(nr,dr);    
 
-    // iflet_whilelet_demo();
+    iflet_whilelet_demo();
 
     
 }

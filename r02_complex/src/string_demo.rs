@@ -16,12 +16,13 @@ pub fn slice_array_int_test() {
 }
 
 fn iterate_through_const_string() {
+    
     let qt:&'static str = "Honesty is the best policy";
     println!("{}",qt);
     let s = String::from(qt);
     println!("String version : {}", s);
 
-    for word in qt.split_whitespace() {
+    for word in qt.split_whitespace() { 
         print!("{} ",word);
     }
 
@@ -29,6 +30,6 @@ fn iterate_through_const_string() {
 
 pub fn string_test() {
     //slice_array_int_test();
-    iterate_through_const_string();    
+    iterate_through_const_string();  
     
 }
