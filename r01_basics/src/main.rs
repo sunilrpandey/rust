@@ -176,9 +176,8 @@ fn main() {
     misc::ret_value_without_return_increment();
     // Later, Once traits is done 
     // misc::custom_print_demo(); 
-    basic_functions_demo();
     
-
+    basic_functions_demo();
     basic_datatype_demo();
     basic_expression_demo();
     basic_shadowing_demo();
