@@ -4,6 +4,7 @@ mod struct_demo;
 mod enum_demo;
 mod some_or_none_demo;
 mod string_demo;
+mod tuple_struct_demo;
 //use enum_demo::Color;
 //use enum_demo::*;
 
@@ -110,5 +111,8 @@ fn main() {
  
     //casting_demo();
     casting_demo_from_book();
+    
+    //tuple struct
+    tuple_struct_demo::print_demo();
 
 }
