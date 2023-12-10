@@ -1,5 +1,5 @@
 # rust
-Exploring rust
+Workging with rust
 
 Reopsitory incldes content on
 
