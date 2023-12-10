@@ -5,6 +5,7 @@
 mod misc;
 mod function_demo;
 use function_demo::increment;
+mod control_stmnts;
 
 fn out_function_inc_by2(mut x:u8) -> u8{
     println!("outside function");
@@ -60,18 +61,6 @@ fn array_demo() {
     println!("first element : {}", arr_of_3[0]);
 }
 
-fn controls_if_demo() {
-    let number = 7;
-    // if number { println!("Compilation error");}   // will give error  , no convertio to bool
-    if number == 7 {  // no error  , convertio to bool
-        println!("Equal to 7");
-    } else {
-        println!("Not Equal to 7");
-    }  
-
-    println!("Print using if/else : {}", if true {"True"} else {"False"});
-
-}
 
 fn basic_functions_demo() {
     // How to use function 
@@ -88,87 +77,6 @@ fn basic_functions_demo() {
 
 }
 
-fn controls_loop_demo() {
-
-    fn invoke_infinte_loop() {
-        loop{
-            println!("Infinite loop : press Ctrl + C to quit");
-        }
-    }
-
-    // invoke_infinte_loop();
-    // return value from loop, but return value using break, not return 
-    let mut cnt = 0;
-    let ret_from_loop = loop {
-        cnt += 1;
-        if cnt == 10 {
-            break cnt;
-        } 
-    };
-    println!("ret from loop : {}", ret_from_loop);
-}
-
-fn controls_while_loop_demo() {
-
-    // while loop demo, loop through until some condition or loop through some container
-    println!("While loop demo");
-    
-    let mut i = 0;
-    while i < 5 {
-        println!("{}!", i);
-        i += 1;
-    }
-}
-
-fn controls_match_demo() {
-
-    println!("Match demo");
-    let mut num = 2;
-    match num {
-        1 => println!("One"),
-        2 => println!("Two"),
-        3 => println!("Three"),
-        _ => println!("Any Default"),
-    }
-    // can collect values using match as well
-    num = 6;
-    let num_str: &str = match num {
-        1 => "One",
-        2 => "Two",
-        5 => "Five",
-        1...10 => "Not Found!!",
-        _ => "InValid Input",
-    };
-    println!("spell of {} : {}", num, num_str);    
-
-}
-
-fn controls_for_loop_demo() {
-
-    // for loop, loop iterate elements through container
-    println!("For loop demo");
-    println!("Loop thrugh element");
-    let a = [100,200,300,400,500];
-    for e in a.iter() {
-        print!("{}! ", e);
-    }
-    println!("Loop thrugh array index");
-    let sz = a.len();
-    for i in 0..sz { // it can be any start..end
-        print!("{}! ", a[i]);
-    }
-    println!("print in reverse :");
-    for i in (0..sz).rev() {
-        print!("{}! ", a[i]);
-    }
-
-    println!("\nUser enumerate function to iterate over range");
-    for (i, x) in (25..31).rev().enumerate() {
-        println!(" pos[{}] = [{}]", i, x);
-    }
-    println!();
-}
-
 fn reference_demo()
 {
     let mut s = String::from("hello");
@@ -179,11 +87,7 @@ fn reference_demo()
     
     println!("{} and {}", r1, r2);    // variables r1 and r2 will not be used after this point
     
-    // let mut r3 = &mut s; // no problem
-    // r3.push_str("world");
-    // println!("{}", r3);
-
-    let mut r3 = & mut s; // no problem
+    let r3 = & mut s; // no problem
     r3.push_str("world");
     println!("{}", r3);
     //println!("{} = {}", r3,s); wnt work since two refernce (mutable + ) are in action
@@ -201,8 +105,8 @@ fn no_dangle() -> String {
 fn dangling_reference_demo()
 {
     // why below code works.. how returned string is managed if it is not being collected
-    //no_dangle();
-    //println!("s = {}","hello");    
+    no_dangle();
+    println!("s = {}","hello");    
 
     let s = no_dangle();
     println!("s = {}",s);    
@@ -234,15 +138,12 @@ fn slice_demo(){
 
 fn main() {
 
+    println!("hahaha!");
     println!("Welcome to Rust!!");
-    //reference_demo();
-    // dangling_reference_demo();
+    reference_demo();
+    dangling_reference_demo();
     slice_demo();
-    return;
-    //misc::print_demo();
     misc::ret_value_without_return_increment();
-    // Later, Once traits is done 
-    // misc::custom_print_demo(); 
     
     basic_functions_demo();
     basic_datatype_demo();
@@ -251,11 +152,9 @@ fn main() {
 
     array_demo();
     tuple_demo();    
+    control_stmnts::control_statement_demo();
 
-    //control demos
-    controls_if_demo();    
-    controls_loop_demo();     
-    controls_while_loop_demo(); 
-    controls_for_loop_demo(); 
-    controls_match_demo();   
+    return;
+    
+
  }
